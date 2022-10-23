@@ -1,0 +1,32 @@
+html {
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  font-size: 14px;
+  font-family: 'PingFangSC-Medium', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑',
+    '宋体', Arial, Verdana, sans-serif;
+  text-size-adjust: 100%;
+  line-height: 1.5;
+  background: #ffffff;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+input {
+  font-size: 32px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #333333;
+  line-height: 45px;
+  border: none;
+  &::placeholder {
+    color: #999999;
+  }
+}
