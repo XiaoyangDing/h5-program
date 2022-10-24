@@ -6,21 +6,9 @@
     </div>
     <div class="login-section">
       <div class="login-section-form">
-        <g-form-item
-          v-model="loginForm.phone"
-          icon="icon-phone"
-          placeholder="请输入手机号"
-          :maxlength="11"
-        ></g-form-item>
-        <g-form-item
-          v-model="loginForm.code"
-          icon="icon-code"
-          placeholder="请输入验证码"
-          :maxlength="6"
-        ></g-form-item>
-        <van-button type="primary" :disabled="!(loginForm.phone && loginForm.code)" @click="Login"
-          >登录</van-button
-        >
+        <g-form-item v-model="loginForm.phone" icon="icon-phone" placeholder="请输入手机号" :maxlength="11"></g-form-item>
+        <g-form-item v-model="loginForm.code" icon="icon-code" placeholder="请输入验证码" :maxlength="6"></g-form-item>
+        <van-button type="primary" :disabled="!(loginForm.phone && loginForm.code)" @click="Login">登录</van-button>
       </div>
     </div>
   </div>

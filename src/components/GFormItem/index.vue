@@ -1,15 +1,7 @@
 <template>
   <div class="form-item" :class="{ 'icon-active': value, focus: isFocus }">
     <svg-icon :icon-class="props.icon" class-name="form-item__icon"></svg-icon>
-    <input
-      v-model="value"
-      type="text"
-      class="item-inp"
-      :placeholder="placeholder"
-      :maxlength="maxlength"
-      @focus="handleFocus"
-      @blur="handleBlur"
-    />
+    <input v-model="value" type="text" class="item-inp" :placeholder="placeholder" :maxlength="maxlength" @focus="handleFocus" @blur="handleBlur" />
   </div>
 </template>
 

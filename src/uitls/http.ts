@@ -62,10 +62,7 @@ class RequestHttp {
           api.responseConfig.errorCallback()
         }
         // 全局错误信息拦截（防止下载文件得时候返回数据流，没有code，直接报错）
-        if (
-          data[api.responseConfig.code] &&
-          data[api.responseConfig.code] !== RequestEnums.SUCCESS
-        ) {
+        if (data[api.responseConfig.code] && data[api.responseConfig.code] !== RequestEnums.SUCCESS) {
           // 此处也可以使用组件提示报错信息
           Toast({
             message: data[api.responseConfig.msg] || '请求数据出错'
