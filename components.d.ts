@@ -15,5 +15,6 @@ declare module '@vue/runtime-core' {
     VanButton: typeof import('vant/es')['Button']
     VanCellGroup: typeof import('vant/es')['CellGroup']
     VanField: typeof import('vant/es')['Field']
+    Vant: typeof import('./src/components/Vant/index.vue')['default']
   }
 }

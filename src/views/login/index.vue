@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
 import { usePiniaStore } from '@/store/index'
 import { login } from '@/api/login'
 import GFormItem from '@/components/GFormItem/index.vue'
