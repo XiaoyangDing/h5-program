@@ -36,9 +36,9 @@ export default defineConfig({
     }
   },
   css: {
-    preprocessorOptions: {
+    preprocessorOptions: { // 配置scss全局变量
       scss: {
-        additionalData: '@import "@/assets/scss/main.scss";'
+        additionalData: '@import "@/styles/config.scss";' // 引入全局scss
       }
     }
   },

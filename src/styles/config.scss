@@ -1,0 +1,14 @@
+@import './variables.scss';
+@import './layout-extend-vant.scss';
+
+input {
+  font-size: 32px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #333333;
+  line-height: 45px;
+  border: none;
+  &::placeholder {
+    color: #999999;
+  }
+}

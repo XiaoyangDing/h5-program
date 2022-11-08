@@ -23,6 +23,7 @@ import { usePiniaStore } from '@/store/index'
 import { login, sendCode } from '@/api/login'
 import GFormItem from '@/components/GFormItem/index.vue'
 import { Toast } from 'vant'
+import router from '@/router'
 import { LoginForm } from '@/types/login/index'
 const piniaStore = usePiniaStore()
 const { getToken } = piniaStore
@@ -62,6 +63,7 @@ const Login = async () => {
   console.log('res', res)
   Toast(`登录成功，token为${res.token}`)
   updateToken(res.token)
+  router.push('/404')
 }
 
 const updateToken = (token: string) => {
@@ -129,7 +131,9 @@ const updateToken = (token: string) => {
       margin-top: 58px;
     }
     .item-text {
-      color: #3186ff;
+      min-width: 120px;
+      text-align: center;
+      color: $primary-color;
       font-size: 30px;
     }
   }
