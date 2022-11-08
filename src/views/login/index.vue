@@ -6,9 +6,13 @@
     </div>
     <div class="login-section">
       <div class="login-section-form">
-        <g-form-item v-model="loginForm.phone" icon="icon-phone" placeholder="请输入手机号" :maxlength="11"></g-form-item>
-        <g-form-item v-model="loginForm.code" icon="icon-code" placeholder="请输入验证码" :maxlength="6"></g-form-item>
-        <van-button type="primary" :disabled="!(loginForm.phone && loginForm.code)" @click="Login">登录</van-button>
+        <g-form-item v-model="loginForm.phone" icon="icon-phone" placeholder="请输入手机号" :maxlength="11" />
+        <g-form-item v-model="loginForm.code" icon="icon-code" placeholder="请输入验证码" :maxlength="6">
+          <div class="item-text" @click="SendCode">
+            {{ msg }}
+          </div>
+        </g-form-item>
+        <van-button type="primary" :disabled="!(loginForm.phone && loginForm.code)" @click="Login"> 登录 </van-button>
       </div>
     </div>
   </div>
@@ -16,15 +20,43 @@
 
 <script setup lang="ts">
 import { usePiniaStore } from '@/store/index'
-import { login } from '@/api/login'
+import { login, sendCode } from '@/api/login'
 import GFormItem from '@/components/GFormItem/index.vue'
 import { Toast } from 'vant'
+import { LoginForm } from '@/types/login/index'
 const piniaStore = usePiniaStore()
 const { getToken } = piniaStore
-const loginForm = reactive({
+const loginForm = reactive<LoginForm>({
   phone: '',
   code: ''
 })
+const msg = ref('获取验证码')
+const time = ref(60)
+
+const SendCode = async () => {
+  if (!loginForm.phone) {
+    Toast('请输入手机号')
+    return
+  }
+  if (!/^1[3456789]\d{9}$/.test(loginForm.phone)) {
+    Toast('请输入正确的手机号')
+    return
+  }
+  const res: any = await sendCode({ phone: loginForm.phone })
+  console.log('res', res)
+  const timer = setInterval(() => {
+    if (time.value > 0 && time.value <= 60) {
+      time.value--
+      msg.value = time.value + 's'
+    } else {
+      clearInterval(timer)
+      time.value = 60
+      msg.value = '获取验证码'
+    }
+  }, 1000)
+  Toast(`验证码发送成功，验证码为：${res.code}`)
+}
+
 const Login = async () => {
   const res: any = await login(loginForm)
   console.log('res', res)
@@ -95,6 +127,10 @@ const updateToken = (token: string) => {
     z-index: 9;
     .van-button {
       margin-top: 58px;
+    }
+    .item-text {
+      color: #3186ff;
+      font-size: 30px;
     }
   }
 }

@@ -14,11 +14,12 @@ export default defineConfig({
     vue(),
     createSvg('./src/icons/svg/'),
     Components({
-      resolvers: [VantResolver()]
+      resolvers: [VantResolver()],
+      dts: 'src/types/components.d.ts'
     }),
     AutoImport({
       imports: ['vue', 'vue-router'],
-      dts: 'src/auto-import.d.ts'
+      dts: 'src/types/auto-import.d.ts'
     }),
     createStyleImportPlugin({
       libs: [{ libraryName: 'vant', esModule: true, resolveStyle: (name) => `../es/${name}/style/index` }]

@@ -1,7 +1,8 @@
 <template>
   <div class="form-item" :class="{ 'icon-active': value, focus: isFocus }">
-    <svg-icon :icon-class="props.icon" class-name="form-item__icon"></svg-icon>
+    <svg-icon :icon-class="props.icon" class-name="form-item__icon" />
     <input v-model="value" type="text" class="item-inp" :placeholder="placeholder" :maxlength="maxlength" @focus="handleFocus" @blur="handleBlur" />
+    <slot />
   </div>
 </template>
 
@@ -12,7 +13,7 @@ const props = withDefaults(
     modelValue: string
     icon: string
     placeholder?: string
-    maxlength?: number
+    maxlength: number
   }>(),
   {
     placeholder: '请输入'
@@ -69,6 +70,9 @@ const handleBlur = () => {
     margin-right: 20px;
     font-size: 40px;
     color: #a7adca;
+  }
+  input {
+    flex: 1;
   }
 }
 </style>

@@ -1,12 +1,12 @@
-interface config {
+interface Config {
   code: string
   data: string
   msg: string
   encode: string
   signData: string
-  isOK: Function
+  isOK: (response: any) => boolean
   errorCodes: Array<string>
-  errorCallback: Function
+  errorCallback: () => void
 }
 
 // 请求地址
@@ -17,7 +17,7 @@ const url: string = base
 // 数据传输类配置
 const contentType = 'application/json' // form提交数据：application/x-www-form-urlencoded
 
-const responseConfig: config = {
+const responseConfig: Config = {
   // 响应代码
   code: 'respCode',
   // 响应数据
